@@ -1,0 +1,14 @@
+name: 'Load variables file composite action'
+description: 'Composite action to run export variables from a file'
+
+inputs:
+  file_path:
+    description: 'path of the file containing variables'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Load variables from file ${{ inputs.file_path }}
+      shell: bash
+      run: cat ${{ inputs.file_path }} >> $GITHUB_ENV
