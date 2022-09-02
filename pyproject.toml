@@ -1,0 +1,71 @@
+[tool.poetry]
+name = "evse"
+version = "0.1.0"
+description = "Work from TotalEnergies team 1 on the EV charlenge proposed by Shell: https://www.hackerearth.com/en-us/challenges/competitive/shellai-hackathon-2022"
+authors = ["Shell AI team 1"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^1.4.4"
+numpy = "^1.23.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^4.0.1"
+bandit = "^1.7.0"
+pre-commit = "^2.15.0"
+pytest-cov = "^3.0.0"
+flake8-formatter-junit-xml = "^0.0.6"
+isort = "^5.9.3"
+safety = "^1.10.3"
+black = "^22.3.0"
+python-semantic-release = "^7.29.7"
+notebook = "^6.4.12"
+
+[tool.pytest.ini_options]
+junit_family = "xunit1"
+
+[tool.coverage.run]
+source=["evse/*"]
+omit=["tests/*","venv/*"]
+
+[tool.black]
+line-length = 120
+target-version = ['py37']
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.isort]
+profile = "black"
+
+[tool.semantic_release]
+version_variable = [
+    "pyproject.toml:version",
+    "evse/__init__.py:__version__"
+]
+branch = "main"
+upload_to_repository = true
+upload_to_release = false
+build_command = "poetry build"
+commit_author = "EVSE Build Service"
+repository = "evse"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
