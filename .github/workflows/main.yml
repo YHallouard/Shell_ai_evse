@@ -61,17 +61,17 @@ jobs:
         uses: ./.github/actions/load-var-file
         with:
           file_path: ./.github/variables/variables.shared.yml
-      - name: Use Node.js ${{ env.NODE_JS_VERSION }}
-        uses: actions/setup-node@v3
+      - name: Use Python ${{ env.Python_VERSION }}
+        uses: actions/setup-python@v4
         with:
-          node-version: ${{ env.NODE_JS_VERSION }}
+          python-version: ${{ env.PYTHON_VERSION }}
       - name: Install dependencies
         run: |
-          npm install @semantic-release/changelog -D
-          npm install @semantic-release/release-notes-generator -D
-          npm install @semantic-release/commit-analyzer -D
-          npm install @semantic-release/git -D
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
-        run: npx semantic-release
+          pip install -U pip
+          pip install poetry
+          poetry config --local
+          poetry --version
+      - name: Python Semantic Release
+        uses: relekang/python-semantic-release@master
+        with:
+          github_token: ${{ secrets.PAT_GITHUB }}
