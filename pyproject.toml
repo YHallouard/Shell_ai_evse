@@ -62,7 +62,7 @@ version_variable = [
 branch = "main"
 upload_to_repository = true
 upload_to_release = false
-build_command = "poetry build"
+build_command = "pip install poetry && poetry build"
 commit_author = "EVSE Build Service"
 repository = "evse"
 
