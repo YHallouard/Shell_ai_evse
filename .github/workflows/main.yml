@@ -41,16 +41,38 @@ jobs:
           run: make check-flake8
         - name: Analyse Vulnerabilities with Bandit
           run: make check-bandit
-        - name: Build coverage file
-          run: make text-unit-tests-cov
-        - name: Comment coverage
-          uses: coroo/pytest-coverage-commentator@v1.0.2
+
+  test:
+      name: Test
+      runs-on: ubuntu-latest
+      steps:
+          -   uses: actions/checkout@v1
+          -   name: Load Env Var
+              uses: ./.github/actions/load-var-file
+              with:
+                  file_path: ./.github/variables/variables.shared.yml
+          -   name: Use Python ${{ env.Python_VERSION }}
+              uses: actions/setup-python@v4
+              with:
+                  python-version: ${{ env.PYTHON_VERSION }}
+          -   name: Prepare Environement
+              run:
+                  pip install -U pip
+                  pip install poetry
+                  poetry config --local
+                  poetry --version
+          -   name: Install dependencies
+              run: poetry install -vv
+          -   name: Build coverage file
+              run: make text-unit-tests-cov
+          -   name: Comment coverage
+              uses: coroo/pytest-coverage-commentator@v1.0.2
 
 
   release:
     name: Release
     runs-on: ubuntu-latest
-    needs: [quality]
+    needs: [quality, test]
     if: ${{ github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/main' }}
     steps:
       - name: Checkout
