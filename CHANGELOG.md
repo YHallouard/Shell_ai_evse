@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.0.2 (2022-09-03)
+### Fix
+* EVSE build poetry ([#7](https://github.com/YHallouard/Shell_ai_evse/issues/7)) ([`100982d`](https://github.com/YHallouard/Shell_ai_evse/commit/100982dfa522d854a78e78cbb2892f94b4c4b28f))
+
 ## v0.0.1 (2022-09-03)
 ### Fix
 * EVSE-005 fix release versionning ([#6](https://github.com/YHallouard/Shell_ai_evse/issues/6)) ([`df2d202`](https://github.com/YHallouard/Shell_ai_evse/commit/df2d202aae2fb657c7bac84c7d7a36cfd2060533))
