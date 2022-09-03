@@ -2,4 +2,4 @@
 
 __author__ = """Shell AI Team 1"""
 __email__ = '""'
-__version__ = "0.0.2"
+__version__ = "0.0.3"
