@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.0 (2022-09-03)
+### Feature
+* Evse 005 get submission file ([#9](https://github.com/YHallouard/Shell_ai_evse/issues/9)) ([`f09862a`](https://github.com/YHallouard/Shell_ai_evse/commit/f09862a28b3c0fb8ef71ca115c5e3e6831f99667))
+
 ## v0.0.3 (2022-09-03)
 ### Fix
 * EVSE_006 upload to repository ([#8](https://github.com/YHallouard/Shell_ai_evse/issues/8)) ([`b27ce1a`](https://github.com/YHallouard/Shell_ai_evse/commit/b27ce1a44178071725e5069d3b932613ca7dc5ad))
